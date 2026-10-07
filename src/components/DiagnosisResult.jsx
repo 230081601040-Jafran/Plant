@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
   ShieldCheck, AlertTriangle, Activity, Eye, FileText, Download, BookmarkPlus, 
-  RefreshCw, CheckCircle, Droplets, Sun, Thermometer, Wind, Zap, Layers, MessageSquare, ExternalLink
+  RefreshCw, CheckCircle, Droplets, Sun, Thermometer, Wind, Zap, Layers, MessageSquare, AlertCircle
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import html2canvas from 'html2canvas';
@@ -99,6 +99,13 @@ export default function DiagnosisResult({ result, onReset, onSaveToHistory, isSa
 
   return (
     <div className="diagnosis-container" ref={reportRef}>
+      {result.apiWarning && (
+        <div className="api-warning-banner">
+          <AlertCircle className="icon-inline" />
+          <span>{result.apiWarning}</span>
+        </div>
+      )}
+
       {/* Top Banner Header */}
       <div className="diagnosis-header-card">
         <div className="header-status-badge">
